@@ -1,15 +1,16 @@
-{% load static %}
-<link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+{% extends 'base.html' %}  <!--템플릿 상속-->
+{% block content %}
 <div class="container my-3">
   <h2 class="border-bottom py-2">{{ question.subject }}</h2>
   <div class="card my-3">
     <div class="card-body">
       <div class="card-text" style="white-space: pre-line;">
+      <!--텍스트의 줄바꿈을 정상적으로 보이게함-->
         {{ question.content }}
       </div>
       <div class="d-flex justify-content-end">
         <div class="badge badge-light p-2">
-          {{ question.create_date}}
+          {{ question.create_date }}
         </div>
       </div>
     </div>
@@ -20,25 +21,38 @@
   {% for answer in question.answer_set.all %}
   <div class="card my-3">
     <div class="card-body">
-        <div class="card-text" style="white-space: pre-line;">
-          {{ answer.content }}
+      <div class="card-text" style="white-space: pre-line;">
+      <!--텍스트의 줄바꿈을 정상적으로 보이게함-->
+        {{ answer.content }}
+      </div>
+      <div class="d-flex justify-content-end">
+        <div class="badge badge-light p-2">
+          {{ answer.create_date }}
         </div>
-        <div class="d-flex justify-content-end">
-          <div class="badge badge-light p-2">
-            {{ answer.create_date}}
-          </div>
-        </div>
+      </div>
     </div>
   </div>
   {% endfor %}
-
-
-<!--답변 등록 폼-->
+  <!--답변 등록 폼-->
   <form action="{% url 'pybo:answer_create' question.id %}" method="post">
     {% csrf_token %}
+    <!-- 유효성 위배 오류 처리 시작-->
+    {% if form.errors %}
+    <div class="alert alert-danger" role="alert">
+      {% for field in form %}
+        {% if field.errors %}
+        <strong>{{ field.label }}</strong>
+           {{ field.errors }}
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+    <!-- 유효성 위배 오류 처리 끝-->
     <div class="form-group">
-    <textarea name="content" id="content" rows="10" class="form-control"></textarea>
+      <textarea name="content" id="content"
+                rows="10" class="form-control"></textarea>
     </div>
     <input type="submit" value="답변 등록" class="btn btn-primary">
   </form>
 </div>
+{% endblock %}
