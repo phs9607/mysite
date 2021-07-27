@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <link rel="stylesheet" href="{% static 'pybo/profile.css' %}">
+</head>
+<body>
+    <div id="container">
+        <header>
+            <nav>
+                <div id="logo">
+                    <a href="{% url 'pybo:index' %}">
+                        <h2>PyWeb</h2>
+                    </a>
+                </div>
+                <ul id="main-nav">
+                    <li><a href="#who">나는?(Who)</a></li>
+                    <li><a href="#job">경력(Job)</a></li>
+                    <li><a href="#skill">기술(Skill)</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section id="who">
+            <div class="page-title">
+                <h1>Who Am I?</h1>
+            </div>
+            <div class="content">
+                <div class="photo">
+                    <img src="{% static 'pybo/cup-1.jpg' %}" alt="컵">
+                </div>
+                <div class="text">
+                    <p>저는 인천 부평동에서 살고 있어요.</p>
+                    <p>파이썬(Python)으로 프로그래밍합니다.</p>
+                    <p>웹 사이트를 제작합니다.</p>
+                </div>
+            </div>
+        </section>
+        <section id="job">
+            <div class="page-title">
+                <h1>Job</h1>
+            </div>
+            <div class="content">
+                <div class="text">
+                    <ul id="career">
+                        <li>abc 주식회사 - 웹 사이트 제작 업무</li>
+                        <li>def 주식회사 - 웹 개발(SI)</li>
+                        <li>123 주식회사 - 웹 사이트 제작 업무</li>
+                        <li>456 주식회사 - 웹 유지보수(SM)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="skill">
+            <div class="page-title">
+                <h1>Skill</h1>
+            </div>
+            <div class="content">
+                <div class="photo">
+                    <img src="{% static 'pybo/cup-3.jpg' %}" alt="컵">
+                </div>
+                <div class="text">
+                    <p>☞ 작품을 클릭하면 사이트로 이동합니다.</p>
+                    <ol id="link">
+                        <li><a href="#">회원관리형 게시판</a></li>
+                        <li><a href="#">북마크 관리 페이지</a></li>
+                        <li><a href="#">팀 프로젝트 이름</a></li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div id="bottomMenu">
+                <ul>
+                    <li><a href="#">My Blog</a></li>
+                    <li><a href="#">SNS</a></li>
+                    <li>email: abc123@test.com</a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

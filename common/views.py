@@ -9,10 +9,11 @@ def signup(request):
             form.save()
             username = form.cleaned_data.get('username')
             password1 = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=password1)
-            login(request, user)
+            user = authenticate(username=username, password=password1) #로그인
+            login(request, user)   # 세션 권한을 획득(인증)
             return redirect('index')
-    else:
+    else:  # GET
         form = UserForm()
     context = {'form': form}
     return render(request, 'common/signup.html', context)
+

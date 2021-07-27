@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'pybo/bootstrap.css' %}">
+    <script src="{% static 'pybo/watch.js' %}"></script>
+    <title>Welcome! PyWeb</title>
+</head>
+<body>
+  {% include 'navbar.html' %}
+  <div class="jumbotron">
+    <div class="text-center">
+      <h1>Welcome! Hava a Good Day!</h1>
+    </div>
+  </div>
+  <div class="container">
+      <div class="text-center">
+          <img src="{% static 'pybo/friends.PNG' %}" alt="인공지능 스피커">
+          <p id="demo" class="my-3"></p>
+      </div>
+  </div>
+
+<script src="{% static 'pybo/jquery-3.6.0.js' %}"></script>
+<script src="{% static 'pybo/bootstrap.js' %}"></script>
+</body>
+</html>
